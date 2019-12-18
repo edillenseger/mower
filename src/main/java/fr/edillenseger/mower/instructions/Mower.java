@@ -1,4 +1,4 @@
-package fr.edillenseger.mower;
+package fr.edillenseger.mower.instructions;
 
 import fr.edillenseger.mower.instructions.Coordinates;
 import fr.edillenseger.mower.instructions.Movement;

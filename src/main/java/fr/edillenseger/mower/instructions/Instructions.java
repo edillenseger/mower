@@ -12,7 +12,7 @@ public class Instructions implements Serializable {
         if(this.mowerInstructions == null){
             this.mowerInstructions = new ArrayList<>();
         }
-        if(canAddMowerInstructions(mowerInstructions)){
+        if(mowerInstructions != null && canAddMowerInstructions(mowerInstructions)){
             this.mowerInstructions.add(mowerInstructions);
         }
     }

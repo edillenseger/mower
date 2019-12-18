@@ -1,7 +1,5 @@
 package fr.edillenseger.mower.instructions;
 
-import fr.edillenseger.mower.Mower;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,8 +13,12 @@ public class InstructionsRunner {
 
     public void execute(Instructions instructions) {
         LOGGER.info("Executing instructions");
-        mowers = new ArrayList<>();
-        instructions.mowerInstructions.forEach(mowerInstructions -> execute(mowerInstructions, instructions.maxCoordinates));
+        if(instructions != null){
+            mowers = new ArrayList<>();
+            instructions.mowerInstructions.forEach(mowerInstructions -> execute(mowerInstructions, instructions.maxCoordinates));
+        } else {
+            LOGGER.warning("No instructions to execute");
+        }
     }
 
     private void execute(MowerInstructions mowerInstructions, Coordinates maxCoordinates){
