@@ -44,7 +44,6 @@ public class InstructionsReaderTest {
         Assertions.assertEquals(Orientation.E, mowerInstructions.initialOrientation);
     }
 
-
     @Test
     public void should_read_movements_of_second_mower() {
         InstructionsReader instructionsReader = new InstructionsReader();

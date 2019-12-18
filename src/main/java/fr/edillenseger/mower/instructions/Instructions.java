@@ -12,9 +12,13 @@ public class Instructions implements Serializable {
         if(this.mowerInstructions == null){
             this.mowerInstructions = new ArrayList<>();
         }
-        if(mowerInstructions.initialCoordinates.x <= maxCoordinates.x
-            && mowerInstructions.initialCoordinates.y <= maxCoordinates.y){
+        if(canAddMowerInstructions(mowerInstructions)){
             this.mowerInstructions.add(mowerInstructions);
         }
+    }
+
+    private boolean canAddMowerInstructions(MowerInstructions mowerInstructions){
+        return mowerInstructions.initialCoordinates.x >= 0 && mowerInstructions.initialCoordinates.x <= maxCoordinates.x
+                && mowerInstructions.initialCoordinates.y >= 0 && mowerInstructions.initialCoordinates.y <= maxCoordinates.y;
     }
 }
