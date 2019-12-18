@@ -1,6 +1,5 @@
 package fr.edillenseger.mower.instructions;
 
-import fr.edillenseger.mower.Mower;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,31 +17,31 @@ public class InstructionsReaderTest {
     public void should_read_initial_coordinates_of_first_mower() {
         InstructionsReader instructionsReader = new InstructionsReader();
         Instructions instructions = instructionsReader.readInstructions("instructions.txt");
-        Mower mower = instructions.mowers.get(0);
-        Assertions.assertNotNull(mower);
-        Assertions.assertEquals(1, mower.coordinates.x);
-        Assertions.assertEquals(2, mower.coordinates.y);
-        Assertions.assertEquals(Orientation.N, mower.orientation);
+        MowerInstructions mowerInstructions = instructions.mowerInstructions.get(0);
+        Assertions.assertNotNull(mowerInstructions);
+        Assertions.assertEquals(1, mowerInstructions.initialCoordinates.x);
+        Assertions.assertEquals(2, mowerInstructions.initialCoordinates.y);
+        Assertions.assertEquals(Orientation.N, mowerInstructions.initialOrientation);
     }
 
     @Test
     public void should_read_movements_of_first_mower() {
         InstructionsReader instructionsReader = new InstructionsReader();
         Instructions instructions = instructionsReader.readInstructions("instructions.txt");
-        Mower mower = instructions.mowers.get(0);
-        Assertions.assertNotNull(mower);
-        Assertions.assertEquals(9, mower.movements.size());
+        MowerInstructions mowerInstructions = instructions.mowerInstructions.get(0);
+        Assertions.assertNotNull(mowerInstructions);
+        Assertions.assertEquals(9, mowerInstructions.movements.size());
     }
 
     @Test
     public void should_read_initial_coordinates_of_second_mower() {
         InstructionsReader instructionsReader = new InstructionsReader();
         Instructions instructions = instructionsReader.readInstructions("instructions.txt");
-        Mower mower = instructions.mowers.get(1);
-        Assertions.assertNotNull(mower);
-        Assertions.assertEquals(3, mower.coordinates.x);
-        Assertions.assertEquals(3, mower.coordinates.y);
-        Assertions.assertEquals(Orientation.E, mower.orientation);
+        MowerInstructions mowerInstructions = instructions.mowerInstructions.get(1);
+        Assertions.assertNotNull(mowerInstructions);
+        Assertions.assertEquals(3, mowerInstructions.initialCoordinates.x);
+        Assertions.assertEquals(3, mowerInstructions.initialCoordinates.y);
+        Assertions.assertEquals(Orientation.E, mowerInstructions.initialOrientation);
     }
 
 
@@ -50,8 +49,8 @@ public class InstructionsReaderTest {
     public void should_read_movements_of_second_mower() {
         InstructionsReader instructionsReader = new InstructionsReader();
         Instructions instructions = instructionsReader.readInstructions("instructions.txt");
-        Mower mower = instructions.mowers.get(1);
-        Assertions.assertNotNull(mower);
-        Assertions.assertEquals(10, mower.movements.size());
+        MowerInstructions mowerInstructions = instructions.mowerInstructions.get(1);
+        Assertions.assertNotNull(mowerInstructions);
+        Assertions.assertEquals(10, mowerInstructions.movements.size());
     }
 }

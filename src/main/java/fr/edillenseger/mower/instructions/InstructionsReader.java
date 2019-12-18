@@ -1,7 +1,5 @@
 package fr.edillenseger.mower.instructions;
 
-import fr.edillenseger.mower.Mower;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,7 +23,7 @@ public class InstructionsReader {
             Instructions instructions = new Instructions();
             instructions.maxCoordinates = getMaxCoordinates(instructionsLines.get(0));
             for(int i = 1; i < instructionsLines.size(); i = i+2){
-                instructions.addMower(getMowerInstructions(instructionsLines.get(i), instructionsLines.get(i+1)));
+                instructions.addMowerInstructions(getMowerInstructions(instructionsLines.get(i), instructionsLines.get(i+1)));
                 //todo vérifier si on a bien les deux lignes
             }
             return instructions;
@@ -37,21 +35,21 @@ public class InstructionsReader {
         return null;
     }
 
-    private Mower getMowerInstructions(String lineStartingPosition, String lineInstructions){
-        Mower mower = new Mower();
+    private MowerInstructions getMowerInstructions(String lineStartingPosition, String lineInstructions){
+        MowerInstructions mowerInstructions = new MowerInstructions();
         if(lineStartingPosition.matches("^\\d \\d [NEWS]$")){
             String[] split = lineStartingPosition.split(" ");
-            mower.coordinates = new Coordinates(Integer.valueOf(split[0]), Integer.valueOf(split[1]));
-            mower.orientation = Orientation.valueOf(split[2]);
+            mowerInstructions.initialCoordinates = new Coordinates(Integer.valueOf(split[0]), Integer.valueOf(split[1]));
+            mowerInstructions.initialOrientation = Orientation.valueOf(split[2]);
         }//TODO gestion erreur
-        mower.movements = new ArrayList<>();
+        mowerInstructions.movements = new ArrayList<>();
         if(lineInstructions.matches("^[LRF]*$")){
             char[] split = lineInstructions.toCharArray();
             for(char movement : split){
-                mower.movements.add(Movement.valueOf(String.valueOf(movement)));
+                mowerInstructions.movements.add(Movement.valueOf(String.valueOf(movement)));
             }
         }//TODO gestion erreur
-        return mower;
+        return mowerInstructions;
     }
 
     private Coordinates getMaxCoordinates(String line){

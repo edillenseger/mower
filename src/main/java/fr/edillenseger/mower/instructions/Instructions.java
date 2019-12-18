@@ -1,22 +1,20 @@
 package fr.edillenseger.mower.instructions;
 
-import fr.edillenseger.mower.Mower;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Instructions implements Serializable {
     public Coordinates maxCoordinates;
-    public List<Mower> mowers;
+    public List<MowerInstructions> mowerInstructions;
 
-    public void addMower(Mower mower){
-        if(this.mowers == null){
-            this.mowers = new ArrayList<>();
+    public void addMowerInstructions(MowerInstructions mowerInstructions){
+        if(this.mowerInstructions == null){
+            this.mowerInstructions = new ArrayList<>();
         }
-        if(mower.coordinates.x <= maxCoordinates.x
-            && mower.coordinates.y <= maxCoordinates.y){
-            this.mowers.add(mower);
+        if(mowerInstructions.initialCoordinates.x <= maxCoordinates.x
+            && mowerInstructions.initialCoordinates.y <= maxCoordinates.y){
+            this.mowerInstructions.add(mowerInstructions);
         }
     }
 }
