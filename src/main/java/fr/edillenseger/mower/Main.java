@@ -1,19 +1,19 @@
 package fr.edillenseger.mower;
 
-import fr.edillenseger.mower.instructions.Instructions;
-import fr.edillenseger.mower.file.FileReader;
+import fr.edillenseger.mower.exceptions.*;
+import fr.edillenseger.mower.file.*;
+import fr.edillenseger.mower.instructions.InstructionsFile;
 import fr.edillenseger.mower.instructions.InstructionsRunner;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.logging.LogManager;
 
 public class Main {
 
-    public static void main(String args[]) throws IOException, URISyntaxException {
+    public static void main(String args[]) throws IOException, URISyntaxException, MowerArgumentException {
         FileReader fileReader = new FileReader();
-        Instructions instructions = fileReader.readFromResourcesFolder("instructions.txt");
+        InstructionsFile instructionsFile = fileReader.readFromResourcesFolder("instructions.txt");
         InstructionsRunner instructionsRunner = new InstructionsRunner();
-        instructionsRunner.execute(instructions);
+        instructionsRunner.execute(instructionsFile);
     }
 }

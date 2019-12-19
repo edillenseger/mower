@@ -19,17 +19,11 @@ public enum Orientation {
     }
 
     public Orientation getLeft() {
-        if(this.ordinal() == 0){
-            return Orientation.values()[Orientation.values().length - 1];
-        }
-        return Orientation.values()[this.ordinal() - 1];
+        return this.ordinal() == 0 ? Orientation.get(Orientation.size() - 1) : Orientation.get(this.ordinal() - 1);
     }
 
     public Orientation getRight() {
-        if(this.ordinal() == Orientation.values().length - 1){
-            return Orientation.values()[0];
-        }
-        return Orientation.values()[this.ordinal() + 1];
+        return this.ordinal() == Orientation.size() - 1 ? Orientation.get(0) : Orientation.get(this.ordinal() + 1);
     }
 
     public String getLabel() {
@@ -42,5 +36,13 @@ public enum Orientation {
 
     public int getIncrementY() {
         return incrementY;
+    }
+
+    private static int size(){
+        return Orientation.values().length;
+    }
+
+    private static Orientation get(int ordinal){
+        return Orientation.values()[ordinal];
     }
 }

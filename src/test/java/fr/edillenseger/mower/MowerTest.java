@@ -12,35 +12,35 @@ public class MowerTest {
     public void should_turn_left(){
         Mower mower = new Mower(new Coordinates(1, 1), Orientation.N);
         mower.turnLeft();
-        Assertions.assertEquals(1, mower.coordinates.x);
-        Assertions.assertEquals(1, mower.coordinates.y);
-        Assertions.assertEquals(Orientation.W, mower.orientation);
+        Assertions.assertEquals(1, mower.getCoordinates().getX());
+        Assertions.assertEquals(1, mower.getCoordinates().getY());
+        Assertions.assertEquals(Orientation.W, mower.getOrientation());
     }
 
     @Test
     public void should_turn_right(){
         Mower mower = new Mower(new Coordinates(1, 1), Orientation.N);
         mower.turnRight();
-        Assertions.assertEquals(1, mower.coordinates.x);
-        Assertions.assertEquals(1, mower.coordinates.y);
-        Assertions.assertEquals(Orientation.E, mower.orientation);
+        Assertions.assertEquals(1, mower.getCoordinates().getX());
+        Assertions.assertEquals(1, mower.getCoordinates().getY());
+        Assertions.assertEquals(Orientation.E, mower.getOrientation());
     }
 
     @Test
     public void should_move_forward(){
         Mower mower = new Mower(new Coordinates(1, 1), Orientation.N);
-        mower.forward(new Coordinates(5, 5));
-        Assertions.assertEquals(1, mower.coordinates.x);
-        Assertions.assertEquals(2, mower.coordinates.y);
-        Assertions.assertEquals(Orientation.N, mower.orientation);
+        mower.moveForward(new Coordinates(5, 5));
+        Assertions.assertEquals(1, mower.getCoordinates().getX());
+        Assertions.assertEquals(2, mower.getCoordinates().getY());
+        Assertions.assertEquals(Orientation.N, mower.getOrientation());
     }
 
     @Test
     public void should_not_move_forward_if_moving_is_outside_the_max_coordinates(){
         Mower mower = new Mower(new Coordinates(1, 5), Orientation.N);
-        mower.forward(new Coordinates(5, 5));
-        Assertions.assertEquals(1, mower.coordinates.x);
-        Assertions.assertEquals(5, mower.coordinates.y);
-        Assertions.assertEquals(Orientation.N, mower.orientation);
+        mower.moveForward(new Coordinates(5, 5));
+        Assertions.assertEquals(1, mower.getCoordinates().getX());
+        Assertions.assertEquals(5, mower.getCoordinates().getY());
+        Assertions.assertEquals(Orientation.N, mower.getOrientation());
     }
 }
